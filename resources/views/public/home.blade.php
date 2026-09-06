@@ -228,18 +228,6 @@
     </div>
 </section>
 
-@if ($spotifyUrl)
-<section style="padding:60px 24px; background:var(--surface);">
-    <div class="container" style="max-width:700px;">
-        <div class="mono" style="color:var(--cyan); font-size:13px; margin-bottom:14px;">sedang saya dengarkan</div>
-        <iframe style="border-radius:12px;" src="{{ str_replace('open.spotify.com/', 'open.spotify.com/embed/', $spotifyUrl) }}"
-                width="100%" height="152" frameborder="0" allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-        </iframe>
-    </div>
-</section>
-@endif
-
 <section id="contact" style="padding:100px 24px; text-align:center;">
     <div class="container" style="max-width:600px; margin:0 auto;">
         <div class="mono" style="color:var(--amber); font-size:14px; margin-bottom:14px;">kontak</div>
