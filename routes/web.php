@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\WorldItemController;
 use App\Http\Controllers\Admin\WorldImageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WorldController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -43,6 +44,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::delete('world-images/{worldImage}', [WorldImageController::class, 'destroy'])->name('world-images.destroy');
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
+    Route::get('/world', [WorldController::class, 'index'])->name('world.index');
+    Route::get('/world/{category:slug}', [WorldController::class, 'category'])->name('world.category');
+    Route::get('/world/item/{item}', [WorldController::class, 'item'])->name('world.item');
 
 
 
