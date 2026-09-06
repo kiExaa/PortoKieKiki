@@ -52,6 +52,10 @@
     }
 </style>
 </head>
+@php
+    $spotifyUrl = \App\Models\Setting::where('key', 'spotify_playlist_url')->value('value');
+@endphp
+
 <body>
 
 <div class="navbar">
@@ -73,6 +77,28 @@
 <footer>
     &copy; {{ date('Y') }} Khairul Rizki — Built with Laravel
 </footer>
+
+@if ($spotifyUrl)
+<div style="position:fixed; bottom:24px; right:24px; z-index:100;">
+
+    <div id="spotify-panel" style="display:none; margin-bottom:12px; background:var(--surface); border:1px solid rgba(10,187,207,0.25); border-radius:12px; padding:12px; width:300px; box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+        <iframe style="border-radius:8px;" src="{{ str_replace('open.spotify.com/', 'open.spotify.com/embed/', $spotifyUrl) }}"
+                width="100%" height="152" frameborder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+        </iframe>
+    </div>
+
+    <button onclick="document.getElementById('spotify-panel').style.display = document.getElementById('spotify-panel').style.display === 'none' ? 'block' : 'none';"
+            style="width:56px; height:56px; border-radius:50%; background:var(--cyan); border:none; cursor:pointer; box-shadow:0 4px 20px rgba(10,187,207,0.5); display:flex; align-items:center; justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18V6l12-2v12" stroke="#081619" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="6" cy="18" r="3" stroke="#081619" stroke-width="1.8"/>
+            <circle cx="18" cy="16" r="3" stroke="#081619" stroke-width="1.8"/>
+        </svg>
+    </button>
+
+</div>
+@endif
 
 </body>
 </html>
